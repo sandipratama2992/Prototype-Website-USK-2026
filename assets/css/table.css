@@ -1,0 +1,61 @@
+/* ===============================
+   TABLE.CSS
+   Halaman list data (CRUD)
+   =============================== */
+
+/* Action bar */
+.table-actions {
+    margin-bottom: 15px;
+}
+
+/* Wrapper table */
+.table-wrapper {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.08);
+}
+
+/* Table utama */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.data-table th {
+    background: #f0f2f5;
+    font-weight: bold;
+}
+
+/* Tombol */
+.btn {
+    display: inline-block;
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 4px;
+    color: white;
+}
+
+.btn-primary {
+    background: #3498db;
+}
+
+.btn-edit {
+    background: #f39c12;
+}
+
+.btn-delete {
+    background: #e74c3c;
+}
+
+.btn:hover {
+    opacity: 0.85;
+    text-decoration: none;
+}
