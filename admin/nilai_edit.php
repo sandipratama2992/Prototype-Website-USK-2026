@@ -4,26 +4,28 @@ include "../config/auth_admin.php";
 
 $id = $_GET['id'];
 
-// Ambil nilai sesuai ID
-$query = mysqli_query($conn, "SELECT * FROM tabel_nilai WHERE id_nilai='$id'");
+// Ambil data nilai + nama siswa (JOIN)
+$query = mysqli_query($conn, "
+    SELECT tabel_nilai.*, tabel_siswa.nama
+    FROM tabel_nilai
+    JOIN tabel_siswa ON tabel_nilai.id_siswa = tabel_siswa.id_siswa
+    WHERE id_nilai='$id'
+");
 $data = mysqli_fetch_assoc($query);
 
-// Ambil daftar siswa
-$siswa = mysqli_query($conn, "SELECT * FROM tabel_siswa");
-
+// Jika tombol update ditekan
 if (isset($_POST['update'])) {
 
-    $id_siswa = $_POST['id_siswa'];
+    $id_siswa = $_POST['id_siswa']; // dikunci (hidden)
     $mapel = $_POST['mapel'];
     $pengetahuan = $_POST['pengetahuan'];
     $keterampilan = $_POST['keterampilan'];
 
     mysqli_query($conn, "
         UPDATE tabel_nilai SET
-        id_siswa='$id_siswa',
-        mapel='$mapel',
-        pengetahuan='$pengetahuan',
-        keterampilan='$keterampilan'
+            mapel='$mapel',
+            pengetahuan='$pengetahuan',
+            keterampilan='$keterampilan'
         WHERE id_nilai='$id'
     ");
 
@@ -65,17 +67,14 @@ if (isset($_POST['update'])) {
 
             <form method="POST">
 
+                <!-- Nama siswa ditampilkan saja -->
                 <div class="form-group">
                     <label>Nama Siswa</label>
-                    <select name="id_siswa" required>
-                        <?php while ($s = mysqli_fetch_assoc($siswa)) { ?>
-                            <option value="<?= $s['id_siswa']; ?>"
-                                <?= ($s['id_siswa'] == $data['id_siswa']) ? 'selected' : ''; ?>>
-                                <?= $s['nama']; ?>
-                            </option>
-                        <?php } ?>
-                    </select>
+                    <input type="text" value="<?= $data['nama']; ?>" readonly>
                 </div>
+
+                <!-- id_siswa dikunci -->
+                <input type="hidden" name="id_siswa" value="<?= $data['id_siswa']; ?>">
 
                 <div class="form-group">
                     <label>Mata Pelajaran</label>
