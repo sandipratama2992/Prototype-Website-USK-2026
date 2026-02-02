@@ -1,12 +1,10 @@
 <?php
 include "../config/koneksi.php";
 include '../config/auth_admin.php';
-
-// Hitung jumlah siswa
-$query = mysqli_query($conn, "SELECT COUNT(*) as total FROM tabel_siswa");
-$data = mysqli_fetch_assoc($query);
-$jumlah_siswa = $data['total'];
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
