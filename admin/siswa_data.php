@@ -39,7 +39,7 @@ $query = mysqli_query($conn, "SELECT * FROM tabel_siswa");
         <h2>Data Siswa</h2>
 
         <div class="table-actions">
-            <a href="siswa_tambah.php" class="btn btn-primary">+ Tambah Siswa</a>
+            <a href="siswa_input.php" class="btn btn-primary">+ Tambah Siswa</a>
         </div>
 
         <div class="table-wrapper">
