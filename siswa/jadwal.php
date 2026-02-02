@@ -2,6 +2,7 @@
 include "../config/koneksi.php";
 include "../config/auth_siswa.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -17,7 +18,7 @@ include "../config/auth_siswa.php";
 
 <div class="dashboard-layout">
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR --> 
     <div class="sidebar">
         <h2>Sistem Informasi Akademik</h2>
         <ul>

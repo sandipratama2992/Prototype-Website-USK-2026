@@ -5,6 +5,8 @@ include "../config/auth_admin.php";
 // Ambil semua data siswa
 $query = mysqli_query($conn, "SELECT * FROM tabel_siswa");
 ?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>

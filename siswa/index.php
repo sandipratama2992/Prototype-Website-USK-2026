@@ -1,18 +1,15 @@
 <?php
 include "../config/koneksi.php";
 include '../config/auth_siswa.php';
-
-$id_user = $_SESSION['id_user'];
-
-// Ambil data siswa login
-$q = mysqli_query($conn, "SELECT * FROM tabel_siswa WHERE id_user='$id_user'");
-$siswa = mysqli_fetch_assoc($q);
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Siswa</title>
+    <title>Dashboard Admin</title>
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
@@ -20,7 +17,7 @@ $siswa = mysqli_fetch_assoc($q);
 
 <div class="dashboard-layout">
 
-    <!-- SIDEBAR -->
+     <!-- SIDEBAR -->
     <div class="sidebar">
         <h2>Sistem Informasi Akademik</h2>
         <ul>
@@ -49,42 +46,79 @@ $siswa = mysqli_fetch_assoc($q);
         <div class="section">
             <h3>Selamat Datang</h3>
             <p>
-                Halo <b><?= $siswa['nama']; ?></b>,  
-                selamat datang di dashboard siswa.  
-                Silakan gunakan menu di samping untuk melihat data akademik kamu.
+                Selamat datang di sistem informasi akademik sekolah.
+                Sistem ini digunakan untuk mengelola data siswa dan nilai.
             </p>
         </div>
 
-        <!-- INFORMASI SINGKAT -->
+        <!-- RINGKASAN -->
         <div class="section">
-            <h3>Informasi Pribadi</h3>
+            <h3>Informasi Singkat</h3>
 
             <div class="card-row">
                 <div class="simple-card">
-                    <b>Nama</b>
-                    <p><?= $siswa['nama']; ?></p>
+                    <b>Total Siswa</b>
+                    <p class="angka">138</p>
                 </div>
 
                 <div class="simple-card">
-                    <b>NISN</b>
-                    <p><?= $siswa['nisn']; ?></p>
+                    <b>Jumlah Jurusan</b>
+                    <p class="angka">4</p>
                 </div>
 
                 <div class="simple-card">
-                    <b>Jurusan</b>
-                    <p><?= $siswa['jurusan']; ?></p>
+                    <b>Jumlah Guru</b>
+                    <p class="angka">26</p>
                 </div>
             </div>
         </div>
 
-        <!-- PETUNJUK -->
+        <!-- VISI MISI -->
         <div class="section">
-            <h3>Petunjuk Penggunaan</h3>
+            <h3>Visi</h3>
+            <p>
+                “Berkarakter, Terampil dan Berjiwa Enterpreuneur.”
+            </p>
+            <h3>Misi</h3>
             <ul>
-                <li>Lihat jadwal pelajaran melalui menu <b>Jadwal Pelajaran</b></li>
-                <li>Cek nilai dan rapor di menu <b>Nilai / Rapor</b></li>
-                <li>Ubah username dan password di menu <b>Pengaturan Akun</b></li>
+                <li>Menyelenggarakan pembiasaan beribadah sesuai agama masing-masing;</li>
+                <li>Menyelenggarakan pembelajaran berbasis teknologi dan informasi;</li>
+                <li>Meningkatkan kompetensi peserta didik untuk memasuki dunia kerja baik tingkat; nasional maupun internasional;</li>
+                <li>Meningkatkan mutu kompetensi pendidik dan tenaga kependidikan yang profesional;</li>
+                <li>Menyelenggarakan pembelajaran yang link and match dengan kebutuhan dunia kerja, dunia usaha dan industri;</li>
+                <li>Menyelenggarakan pengembangan kewirausahaan berbasis produktif kreatif;</li>
+                <li>Menyelenggarakan sertifikasi kompetensi berstandar nasional dan internasional.</li>
             </ul>
+        </div>
+
+        <!-- DAFTAR JURUSAN -->
+        <div class="section">
+            <h3>Program Keahlian</h3>
+            <ul>
+                <li>Rekayasa Perangkat Lunak (RPL)</li>
+                <li>Bisnis Retail (BR)</li>
+                <li>Manajemen Perkantoran (MP)</li>
+                <li>Akuntansi</li>
+            </ul>
+        </div>
+
+        <!-- DAFTAR GURU -->
+        <div class="section">
+            <h3>Struktur Guru</h3>
+
+            <div class="card-row">
+                <div class="simple-card">
+                    <img src="../assets/img/guru/paksandi.jpg" width="70">
+                    <p><b>Sandi Pratama</b></p>
+                    <p>Kepala Jurusan RPL</p>
+                </div>
+
+                <div class="simple-card">
+                    <img src="../assets/img/guru/pakakbar.jpg" width="70">
+                    <p><b>Akbar Ariya Caraka</b></p>
+                    <p>Guru Produktif RPL</p>
+                </div>
+            </div>
         </div>
 
     </div>
