@@ -6,25 +6,6 @@ $id_user = $_SESSION['id_user'];
 $q = mysqli_query($conn, "SELECT * FROM tabel_siswa WHERE id_user='$id_user'");
 $s = mysqli_fetch_assoc($q);
 
-// upload foto
-if (isset($_POST['upload_foto'])) {
-    $nama_file = $_FILES['foto']['name'];
-    $tmp = $_FILES['foto']['tmp_name'];
-
-    if (!empty($nama_file)) {
-        $ext = pathinfo($nama_file, PATHINFO_EXTENSION);
-        $nama_baru = 'siswa_'.$s['id_siswa'].'.'.$ext;
-        $folder = "../assets/img/profile/";
-
-        move_uploaded_file($tmp, $folder.$nama_baru);
-
-        mysqli_query($conn, "UPDATE tabel_siswa SET foto='$nama_baru' WHERE id_user='$id_user'");
-        header("Location: profile.php");
-        exit;
-    }
-}
-
-$foto = !empty($s['foto']) ? $s['foto'] : 'default.png';
 ?>
 
 <!DOCTYPE html>
@@ -61,18 +42,52 @@ $foto = !empty($s['foto']) ? $s['foto'] : 'default.png';
         <div class="profile-card">
 
             <div class="profile-photo">
-                <img src="../assets/img/profile/<?= $foto ?>">
-
-                <form method="POST" enctype="multipart/form-data" style="margin-top:10px;">
-                    <input type="file" name="foto" required>
-                    <button type="submit" name="upload_foto">Upload</button>
-                </form>
+                <img src="../assets/img/profile/default.png">
             </div>
 
             <div class="profile-info">
-                <h3><?= $s['nama']; ?></h3>
-                <p><b>NISN:</b> <?= $s['nisn']; ?></p>
-                <p><b>Jurusan:</b> <?= $s['jurusan']; ?></p>
+                <table>
+                    <tr>
+                        <td>Nama Peserta Didik</td>
+                        <td>: <?= $s['nama']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>NISN</td>
+                        <td>:  <?= $s['nisn']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Tempat Tanggal lahir</td>
+                        <td>: Jakarta, 29 Desember 2006</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin</td>
+                        <td>: Laki-laki</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>: JL. Warakas I NO. 46</td>
+                    </tr>
+                    <tr>
+                        <td>No. HP Peserta Didik</td>
+                        <td>: 0895478956</td>
+                    </tr>
+                    <tr>
+                        <td>Jurusan</td>
+                        <td>: <?= $s['jurusan']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Rombel</td>
+                        <td>: XII RPL</td>
+                    </tr>
+                    <tr>
+                        <td>Nama Wali</td>
+                        <td>: Wahyudin</td>
+                    </tr>
+                    <tr>
+                        <td>No. HP Wali</td>
+                        <td>: 08778546231455</td>
+                    </tr>
+                </table>
             </div>
 
         </div>
